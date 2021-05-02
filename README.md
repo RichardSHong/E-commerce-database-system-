@@ -141,8 +141,7 @@ Account
 | fName | NOT NULL | VARCHAR2(20) | First Name |
 | lName | NOT NULL | VARCHAR2(40) | Last Name |
 | email | NOT NULL | VARCHAR2(320) | Email |
-| cell\_Num |
- | CHAR (12) | Phone Number |
+| cell\_Num | | CHAR (12) | Phone Number |
 | logon\_ID | NOT NULL | VARCHAR2(20) | UserName |
 | password | NOT NULL | VARCHAR2(20) | Password |
 | create\_Date | NOT NULL | DATE | Account created on date |
@@ -194,17 +193,12 @@ Item
 | sku | NOT NULL | CHAR(8) | Stock keeping unit |
 | name | NOT NULL | VARCHAR2(40) | Product Name |
 | price | NOT NULL | NUMBER(12,2) | Product Price |
-| item\_desc |
- | VARCHAR2(100) | Product Description |
-| category |
- | VARCHAR2(10) | Product Category |
+| item\_desc | | VARCHAR2(100) | Product Description |
+| category | | VARCHAR2(10) | Product Category |
 | stock | NOT NULL | NUMBER(5) | Product stock |
-| item\_Star |
- | NUMBER(1) | Product Review |
-| item\_size |
- | VARCHAR2(5) | Product Size |
-| color |
- | VARCHAR2(10) | Product color |
+| item\_Star | | NUMBER(1) | Product Review |
+| item\_size | | VARCHAR2(5) | Product Size |
+| color | | VARCHAR2(10) | Product color |
 
 
 Payment
@@ -212,12 +206,9 @@ Payment
 | payment\_Id | NOT NULL | VARCHAR2(10) | Primary Key |
 | --- | --- | --- | --- |
 | order\_Id | NOT NULL | VARCHAR2(10) | Order&#39;s ID |
-| payment\_Date |
- | DATE | Date of Payment |
-| total\_Amount |
- | NUMBER(12,2) | Total Payment Amount |
-| card\_N |
- | VARCHAR2(16) | Card Number |
+| payment\_Date | | DATE | Date of Payment |
+| total\_Amount | | NUMBER(12,2) | Total Payment Amount |
+| card\_N | | VARCHAR2(16) | Card Number |
 
 Card
 
@@ -225,14 +216,10 @@ Card
 | --- | --- | --- | --- |
 | cc\_Name | NOT NULL | VARCHAR2(40) | Account holder name |
 | pin | NOT NULL | NUMBER(5) | Credit Card&#39;s pin |
-| b\_Street |
- | VARCHAR2(40) | Address street |
-| b\_City |
- | VARCHAR2(20) | City |
-| b\_State |
- | CHAR(2) | State |
-| b\_Zip |
- | CHAR(10) | Zip code (Postal code) |
+| b\_Street | | VARCHAR2(40) | Address street |
+| b\_City | | VARCHAR2(20) | City |
+| b\_State | | CHAR(2) | State |
+| b\_Zip | | CHAR(10) | Zip code (Postal code) |
 
 Return\_line\_item
 
@@ -247,13 +234,10 @@ Review
 | review\_ID | NOT NULL | VARCHAR2(10) | Primary Key |
 | --- | --- | --- | --- |
 | r\_star | NOT NULL | NUMBER(1) | Review&#39;s number of stars |
-| comments |
- | VARCHAR2(255) | Review comment |
+| comments | | VARCHAR2(255) | Review comment |
 | reviewDate | NOT NULL | DATE | Date of review |
-| useful\_flag |
- | NUMBER(1) | 0 being Useful, 1 being Not Useful |
-| num\_of\_words |
- | NUMBER(3) | Review&#39;s number of words |
+| useful\_flag | | NUMBER(1) | 0 being Useful, 1 being Not Useful |
+| num\_of\_words | | NUMBER(3) | Review&#39;s number of words |
 | review\_account | NOT NULL | VARCHAR2(10) | Account&#39;s ID |
 | review\_item | NOT NULL | VARCHAR2(10) | Item&#39;s ID |
 
