@@ -1,0 +1,111 @@
+-- For each account ID, select the Item name, item price, and discounted price of each item ordered where the discount on the price is at least 20%.
+SELECT A.account_ID, I.name, I.price, OI.discounted_Price
+FROM Account A, Customer_Order O, Order_Item OI, Item I
+WHERE A.account_ID=O.account_ID
+     AND O.order_ID=OI.order_ID
+     AND OI.item_ID=I.item_ID
+     AND OI.discounted_price<=0.8*I.price;
+
+
+-- Find the names of users that wrote reviews in 2020 and the average number of stars they gave.
+SELECT A.fName, A.lName, AVG(R.r_star) AS average_stars
+FROM Account A, Review R
+WHERE A.account_ID=R.review_account
+     AND reviewDate>'01-JAN-2020'
+GROUP BY A.fname, A.lname;
+
+
+-- Find all users names that made expensive orders for other people (with expensive orders being anything greater than $200.00), count the number of those orders for each user and the total amount they spent on those orders. Find also the average number of days that it took for those orders to be delivered.
+COLUMN full_Name FORMAT A30;
+COLUMN receiver_Name FORMAT A20;
+COLUMN total FORMAT $9999.99;
+
+SELECT (A.fName || ' ' || A.lName) AS full_Name, O.receiver_Name, SUM(P.total_Amount) AS total, COUNT(O.order_Id) AS orders#, AVG(O.delivery_Date-O.order_Date) AS Days
+FROM Account A, Customer_Order O, Payment P
+WHERE O.account_ID=A.account_ID
+	AND O.order_ID=P.order_id
+	AND P.total_Amount>200.00
+	AND (A.fName || ' ' || A.lName)!=O.receiver_Name
+GROUP BY A.fname, A.lName, O.receiver_Name;
+
+
+-- Find the most expensive item that a user has ordered with a first name beginning with “Bri”:
+Select A.Fname, A.LNAME, MAX(I.Price) 
+FROM ACCOUNT A, CUSTOMER_ORDER C, ORDER_ITEM O, ITEM I 
+WHERE A.Account_ID = C.Account_ID AND C.order_ID = O.order_ID AND O.Item_ID = I.Item_ID AND A.Fname like 'Bri%' 
+GROUP BY A.Fname, A.Lname;
+
+-- Select the cardholder name and billing street for any payments made on the 22nd of November, 2020
+Select C.cc_name, C.B_street 
+FROM CARD C, PAYMENT P 
+WHERE C.Card_Number = P.Card_n AND P.payment_date = '22-NOV-2020';
+
+-- Return the average review star rating for all items. 
+SELECT AVG(R.R_STAR) 
+FROM REVIEW R, ACCOUNT A 
+WHERE R.USEFUL_FLAG IN (0) AND A.account_Type = 'P';
+
+-- Display all account's fname,lname,emails, phone# and date when account created on, that are from NY
+SELECT account.fname, account.lname, account.email, account.cell_num, account.create_date, customer_order.S_State
+FROM ((customer_order
+INNER JOIN account on account.account_id = customer_order.account_id))
+WHERE customer_order.S_State = 'NY'
+GROUP BY account.fname,account.lname, account.email, account.cell_num, account.create_date, customer_order.S_State;
+
+
+-- Display total amount that was refunded for customer_order from city of Philadelphia
+SELECT sum(return.refund_amount) as Philadelphia_returns
+FROM (( return
+INNER JOIN customer_order on customer_order.order_ID = return.order_ID))
+WHERE customer_order.S_city = 'Philadelphia';
+
+
+-- Display order_id,payment date, return date, total amount, refund amount and difference of refund from total amount.
+SELECT payment.order_id, payment.payment_date, return.return_date, payment.total_amount, return.refund_amount, (payment.total_amount-return.refund_amount) as Difference
+FROM (( payment
+INNER JOIN return on return.card_n = payment.card_n));
+
+
+-- a.	Display the First Name, Last Name, Phone, City of the shipping address, State of the shipping address, and the name of items for customers who bought Tshirts or Jeans.
+COLUMN State FORMAT A5
+COLUMN "Last Name" FORMAT A15
+COLUMN "Item Name" FORMAT A30
+
+SELECT A.fname AS "First Name", A.lname as "Last Name", A.cell_num as PHONE, CO.s_City AS City, CO.s_State AS State, I.name AS "Item Name"
+FROM Account A, Customer_Order CO, Order_Item OI, Item I
+WHERE A.account_ID = CO.account_ID
+AND CO.order_ID = OI.order_ID
+AND OI.item_ID = I.item_ID
+AND I.category in ('Tshirts', 'Jeans');
+
+
+-- b.	Display the First Name, Last Name, name of the item, description of the item, the item's selling price(discounted price), and the item's original price for customers who bought the most expensive item.
+COLUMN Description FORMAT A30
+COLUMN "Item Name" FORMAT A30
+COLUMN "Sell Price" FORMAT $9999.99
+COLUMN "Original Price" FORMAT $9999.99
+
+SELECT  A.fname AS "First Name", A.lname as "Last Name", I.name AS "Item Name", I.item_desc AS Description, OI.discounted_price AS "Sell Price", I.price AS "Original Price"
+FROM Account A, Customer_Order CO, Order_Item OI, Item I 
+WHERE A.account_ID = CO.account_ID
+AND CO.order_ID = OI.order_ID
+AND OI.item_ID = I.item_ID
+AND I.price = (
+SELECT MAX(price)
+FROM Item);
+
+
+-- c.	Display the statistics for each category of items that were reviewed after December 31, 2019. The statistics include the highest price, the lowest price, and the average price of items for each category. Order the results in the ascending order of category.
+COLUMN "Maximum Price" FORMAT $9999.99
+COLUMN "Minimum Price" FORMAT $9999.99
+COLUMN "Average Price" FORMAT $9999.99
+
+SELECT I.category, MAX(I.price) AS "Maximum Price", 
+MIN(I.price) AS "Minimum Price", AVG(I.price) AS "Average Price"
+FROM Item I, Review R
+WHERE I.item_ID = R.review_item
+AND R.reviewDate > '31-DEC-2019'
+GROUP BY I.category
+ORDER BY I.category;
+
+
