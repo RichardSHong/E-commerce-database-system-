@@ -4,7 +4,7 @@ INFO 605 - GUFS DBMS
 
 **Online Clothing Store**
 
-_Mariachiara Acconcia, Brian Kong, Janam Patel, and Richard Hong_
+Members: _Mariachiara Acconcia, Brian Kong, Janam Patel, and Richard Hong_
 
 1. **Summary**
 
@@ -162,22 +162,14 @@ Customer\_Order
 | order\_ID | NOT NULL | VARCHAR2(10) | Primary Key |
 | --- | --- | --- | --- |
 | account\_ID | NOT NULL | VARCHAR2(10) | Account&#39;s ID |
-| s\_Street |
- | VARCHAR2(40) | Shipping Street |
-| s\_City |
- | VARCHAR2(20) | Shipping City |
-| s\_State |
- | CHAR(2) | Shipping State |
-| s\_Zip |
- | CHAR(10) | Shipping Zip Code |
-| order\_date |
- | DATE | Order Date |
-| receiver\_name |
- | VARCHAR2(40) | Receiver&#39;s Name |
-| delivery\_date |
- | DATE | Delivery Date |
-| dispatch\_date |
- | DATE | Dispatch Date |
+| s\_Street | | VARCHAR2(40) | Shipping Street |
+| s\_City | | VARCHAR2(20) | Shipping City |
+| s\_State | | CHAR(2) | Shipping State |
+| s\_Zip | | CHAR(10) | Shipping Zip Code |
+| order\_date | | DATE | Order Date |
+| receiver\_name | | VARCHAR2(40) | Receiver&#39;s Name |
+| delivery\_date | | DATE | Delivery Date |
+| dispatch\_date | | DATE | Dispatch Date |
 
 Order\_Status
 
