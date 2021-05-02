@@ -5,6 +5,7 @@ SET NUMWIDTH 6
 SET TIMING ON
 COLUMN EMAIL FORMAT A30
 
+-- Creating Tables
 
 /*
 -- Account 1
