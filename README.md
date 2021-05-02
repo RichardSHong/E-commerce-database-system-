@@ -71,7 +71,7 @@ Lucidchart was used to develop the ERD. Oracle database was used to implement th
 -
 
 4. **Conceptual Design**
-  - ![ERD_GUFS](RackMultipart20210502-4-1c6ocnf_html_a75383f0231fedd7.png)
+  - ![ERD_GUFS](https://github.com/RichardSHong/E-commerce-database-system-/blob/main/images/ERD_GUFS.jpeg?raw=true)
 
 
 - Documentation of the ERD
