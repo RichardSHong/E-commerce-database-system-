@@ -10,7 +10,7 @@ Members: _Mariachiara Acconcia, Brian Kong, Janam Patel, and Richard Hong_
 
 The purpose of this project is to provide a relational database solution to keep track of e-commerce entities. The database is intended for Give Us Five Stars (GUFS), an online clothing store. This document outlines the process that was taken to create the database system. This includes the goals, scope, requirements, ERD, relational schema, and the SQL implementation. In this project we tried to create a simplified database for a real world E-commerce system. The main aspects that are usually visible to E-commerce system users were included in our scope, while we left out all the system&#39;s internal aspects and calculations.
 
-1. **PROJECT STATEMENT**
+2. **PROJECT STATEMENT**
   - Overall Goals of the System
  This project is an E-commerce database system for a new E-commerce clothing website named Give Us Five Stars (GUFS) that will store information about products, such as apparel, footwear, sportswear, etc. and customers, and orders. This system aims to create a single database that combines all of the data for a new E-commerce clothing website, GUFS. Unified data in the E-commerce website enables a single application that supports all aspects of the company&#39;s needs or multiple applications without redundant data. For this project, the authors have decided to use a fictional organization, Give Us Five Stars (GUFS), that reflects the actual data needs and challenges of many E-commerce systems.
 
@@ -23,7 +23,7 @@ The purpose of this project is to provide a relational database solution to keep
 
     - Out-Scope
  The database does not store employees&#39; information and information of warehouses that may affect delivery costs. Nor will it track the entire GUFS budget, including payroll and benefits, operating costs, building costs, and maintenance costs.
-2. **REQUIREMENTS SPECIFICATION**
+3. **REQUIREMENTS SPECIFICATION**
 
 - Analysis of Current system
 
@@ -70,7 +70,7 @@ Lucidchart was used to develop the ERD. Oracle database was used to implement th
 
 -
 
-1. **Conceptual Design**
+4. **Conceptual Design**
   - ![](RackMultipart20210502-4-1c6ocnf_html_a75383f0231fedd7.png)
 
 
@@ -92,7 +92,7 @@ Lucidchart was used to develop the ERD. Oracle database was used to implement th
   - Each item can have zero or many reviews, but each review can only belong to one and one item.
 
 -
-- **Relational Schema**
+5. **Relational Schema**
 - Account( **account\_ID** , registration\_ID, fName, lName, email, cell\_Num, logon\_ID, password, create\_Date, account\_Type)
 
 - Save\_For\_Later( **sfl\_account\_ID, sfl\_ID,** sfl\_item\_ID)
@@ -131,7 +131,7 @@ Foreign Key review\_account references Account(account\_ID); Foreign Key review\
 
 
 
-1. **Data Dictionary**
+6. **Data Dictionary**
 
 Account
 
@@ -255,7 +255,7 @@ Return
 
 
 
-
+7. Sample Data
 - **Select \* from all Tables**
 
 ##
